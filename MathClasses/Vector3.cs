@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Vector3
+    public struct Vector3
     {
         public float x, y, z;
 
         public Vector3(float x, float y, float z)
         {
-            x = 0;
-            y = 0;
-            z = 0;
+			this.x = x;
+			this.y = y;
+			this.z = z;
         }
 
 		//Operator overloading
@@ -22,11 +22,10 @@ namespace MathClasses
 		// V = V + V (point translated by a vector)
 		public static Vector3 operator +(Vector3 lhs, Vector3 rhs)
 		{
-			Vector3 result = new Vector3();
+			Vector3 result;
 			result.x = lhs.x + rhs.x;
 			result.y = lhs.y + rhs.y;
 			result.z = lhs.z + rhs.z;
-
 			return result;
 		}
 
@@ -63,7 +62,7 @@ namespace MathClasses
 			return (float)Math.Sqrt((x * x) + (y * y) + (z * z));
 		}
 		// V.Normalise()
-		public float Normalise()
+		public float Normalize()
 		{
 			float magnitude = Magnitude();
 			if (magnitude != 0)
@@ -78,6 +77,14 @@ namespace MathClasses
 		public float Dot(Vector3 rhs)
 		{
 			return ((x * rhs.x) + (y * rhs.y) + (z * rhs.z));
+		}
+		public Vector3 Cross(Vector3 rhs)
+		{
+			Vector3 result;
+			result.x = (y * rhs.z) - (z * rhs.y);
+			result.y = (z * rhs.x) - (x * rhs.z);
+			result.z = (x * rhs.y) - (y * rhs.x);
+			return result;
 		}
 	}
 }

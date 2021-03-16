@@ -6,55 +6,52 @@ using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Colour
+    public struct Colour
     {
-		public UInt32 colour;
-
-		public Colour()
-		{
-			colour = 0;
-		}
+		public uint colour;
 
 		public Colour(byte red, byte green, byte blue, byte alpha)
-		{ }
+		{
+			colour = (uint)((red << 24) + (green << 16) + (blue << 8) + alpha);
+		}
 
 		public void SetRed(byte red)
 		{
-			colour = colour & 0x00ffffff;
-			colour |= colour & (UInt32)(red << 24);
+			colour = colour & 0x00FFFFFF;
+			colour = colour | (uint)(red << 24);
 		}
-		public uint GetRed(byte red)
+		public byte GetRed()
 		{
-			return red;
+			return (byte)(colour << 24);
 		}
 
 		public void SetGreen(byte green)
 		{
-			colour = colour & 0xff00ffff;
-			colour |= colour & (UInt32)(green << 16);
+			colour = colour & 0xFF00FFFF;
+			colour = colour | (uint)(green << 16);
 		}
-		public uint GetGreen(byte green)
+		public byte GetGreen()
 		{
-			return green;
+			return (byte)(colour << 16);
 		}
 		public void SetBlue(byte blue)
 		{
-			colour = colour & 0xffff00ff;
-			colour |= colour & (UInt32)(blue << 8);
+			colour = colour & 0xFFFF00FF;
+			colour = colour | (uint)(blue << 8);
 		}
-		public uint GetBlue(byte blue)
+		public byte GetBlue()
 		{
-			return blue;
+			return (byte)(colour << 8);
 		}
 		public void SetAlpha(byte alpha)
 		{
-			colour = colour & 0xffffff00;
-			colour |= colour & (UInt32)(alpha << 0);
+			colour = colour & 0xFFFFFF00;
+			colour = colour | (uint)(alpha << 0);
 		}
-		public uint GetAlpha(byte alpha)
+		public byte GetAlpha()
 		{
-		
-			return alpha;
+
+			return (byte)(colour << 0);
 		}
 		
 	}

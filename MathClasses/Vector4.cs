@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace MathClasses
 {
-    public class Vector4
+    public struct Vector4
     {
         public float x, y, z, w;
 
         public Vector4(float x, float y, float z, float w)
         {
-            x = 0;
-            y = 0;
-            z = 0;
-            w = 0;
+			this.x = x;
+			this.y = y;
+			this.z = z;
+			this.w = w;
         }
 
 		//Operator overloading
