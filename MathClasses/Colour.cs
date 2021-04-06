@@ -9,7 +9,6 @@ namespace MathClasses
     public struct Colour
     {
 		public uint colour;
-
 		public Colour(byte red, byte green, byte blue, byte alpha)
 		{
 			colour = (uint)((red << 24) + (green << 16) + (blue << 8) + alpha);
@@ -20,6 +19,7 @@ namespace MathClasses
 			colour = colour & 0x00FFFFFF;
 			colour = colour | (uint)(red << 24);
 		}
+
 		public byte GetRed()
 		{
 			return (byte)((colour & 0xFF000000) >> 24);
@@ -30,29 +30,41 @@ namespace MathClasses
 			colour = colour & 0xFF00FFFF;
 			colour = colour | (uint)(green << 16);
 		}
+
 		public byte GetGreen()
 		{
 			return (byte)((colour & 0x00FF0000) >> 16);
 		}
+
 		public void SetBlue(byte blue)
 		{
 			colour = colour & 0xFFFF00FF;
 			colour = colour | (uint)(blue << 8);
 		}
+
 		public byte GetBlue()
 		{
 			return (byte)((colour & 0x0000FF00) >> 8);
 		}
+
 		public void SetAlpha(byte alpha)
 		{
 			colour = colour & 0xFFFFFF00;
 			colour = colour | (uint)(alpha << 0);
 		}
+
 		public byte GetAlpha()
 		{
-
 			return (byte)((colour & 0x000000FF) >> 0);
 		}
-		
+		public void RSG(byte red, byte green)
+		{
+			byte hotswap;
+			hotswap = green;
+			green = red;
+			red = hotswap;
+			SetRed(red);
+			SetGreen(green);
+		}
 	}
 }

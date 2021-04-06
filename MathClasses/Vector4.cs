@@ -54,7 +54,7 @@ namespace MathClasses
 		// V = f x V (vector scale)
 		public static Vector4 operator *(float lhs, Vector4 rhs)
 		{
-			Vector4 result = new Vector4();
+			Vector4 result;
 			result.x = lhs * rhs.x;
 			result.y = lhs * rhs.y;
 			result.z = lhs * rhs.z;

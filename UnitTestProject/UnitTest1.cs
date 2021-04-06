@@ -551,5 +551,27 @@ namespace UnitTestProject
 
             Assert.AreEqual<UInt32>(c.colour, 0x00000078);
         }
-    }
+
+		// Created tests
+		[TestMethod]
+		public void ColourSetRGBA()
+		{
+			Colour c = new Colour();
+			c.SetAlpha(0x78);
+			c.SetGreen(0x34);
+			c.SetBlue(0x56);
+			c.SetRed(0x12);
+			Assert.AreEqual<UInt32>(c.colour, 0x12345678);
+		}
+
+		[TestMethod]
+		public void SwapRedGreen()
+		{
+			Colour c = new Colour();
+			c.SetGreen(0x34);
+			c.SetRed(0x12);
+			c.RSG(c.GetRed(), c.GetGreen());
+			Assert.AreEqual<UInt32>(c.colour, 0x34120000);
+		}
+	}
 }

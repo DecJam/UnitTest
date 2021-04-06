@@ -52,7 +52,7 @@ namespace MathClasses
 		}
 		public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
 		{
-			Vector3 result = new Vector3();
+			Vector3 result;
 			result.x = lhs.m1 * rhs.x + lhs.m4 * rhs.y + lhs.m7 * rhs.z;
 			result.y = lhs.m2 * rhs.x + lhs.m5 * rhs.y + lhs.m8 * rhs.z;
 			result.z = lhs.m3 * rhs.x + lhs.m6 * rhs.y + lhs.m9 * rhs.z;
